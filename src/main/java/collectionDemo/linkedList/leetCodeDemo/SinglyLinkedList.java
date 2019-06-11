@@ -137,6 +137,25 @@ public class SinglyLinkedList implements LinkedList {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 测试信息
+
     private void print() {
         System.out.println("leangh:" + length);
         System.out.println("tail:" + tailNode);
@@ -174,7 +193,6 @@ public class SinglyLinkedList implements LinkedList {
         for (int i = 0; i <mArr.size() ; i++) {
             System.out.println(mArr.get(i) + "   " + Arrays.toString(argsArrList.get(i)));
             invoke(methods, o, mArr.get(i), argsArrList.get(i));
-
         }
 
 //        s.addAtHead(1);
