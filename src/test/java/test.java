@@ -12,9 +12,6 @@ import java.util.Map;
 public class test {
     public static void main(String[] args) {
 
-        int a = 20;
-        Long mortgageTerm = Long.valueOf(a)  > 30 ? Long.valueOf(a) : 30;
 
-        LocalDateTime.now().plusDays(mortgageTerm);
     }
 }

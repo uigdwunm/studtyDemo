@@ -1,3 +1,4 @@
+import com.sun.deploy.util.StringUtils;
 import explain.HashMap;
 
 import java.io.*;
@@ -5,16 +6,9 @@ import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ForkJoinPool;
-import java.util.function.BiFunction;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.IntStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 /**
  * Description TODO
@@ -24,21 +18,31 @@ import java.util.stream.IntStream;
  * @Date 2019年2019/6/28 14:10
  **/
 public class Demo {
-    public final static BigDecimal LIMITED_LOAN_QUOTA = new BigDecimal("800000");
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) throws CloneNotSupportedException {
+        Domo domo = new Domo();
+        domo.setAaa("123");
+        ArrayList<Domo> domos = new ArrayList<>();
+        domos.add(new Domo());
+        domos.add(new Domo());
+        domos.add(domo);
+        domos.add(new Domo());
+        domos.add(new Domo());
+        domos.add(new Domo());
+        domos.add(new Domo());
+        domos.add(new Domo());
+
+        Domo o = domos.stream().filter(x -> "123".equals(x.getAaa())).findAny().get();
+        System.out.println(o);
 
     }
 
-    private void aa() {
+    private static long getMemory() {
+        Runtime runtime = Runtime.getRuntime();
+        long totalMemory = runtime.totalMemory();
+        long freeMemory = runtime.freeMemory();
+        return totalMemory - freeMemory;
     }
-
-
-
-
-
-
-
-
 
 
     static final char[] simpleArr = {'零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '百', '千', '亿'};
