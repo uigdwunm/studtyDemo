@@ -1,4 +1,4 @@
-package leetCode.head10;
+package leetCode.hard10;
 
 public class Solution {
 

@@ -1,5 +1,6 @@
 import com.sun.deploy.util.StringUtils;
 import explain.HashMap;
+import threadPool.MyThreadPoolExecutor;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -20,20 +21,20 @@ import java.util.stream.Collectors;
 public class Demo {
 
     public static void main(String[] args) throws CloneNotSupportedException {
-        Domo domo = new Domo();
-        domo.setAaa("123");
-        ArrayList<Domo> domos = new ArrayList<>();
-        domos.add(new Domo());
-        domos.add(new Domo());
-        domos.add(domo);
-        domos.add(new Domo());
-        domos.add(new Domo());
-        domos.add(new Domo());
-        domos.add(new Domo());
-        domos.add(new Domo());
+        MyThreadPoolExecutor pool = MyThreadPoolExecutor.newFixedThreadPool(4);
+        for (int i = 0; i < 10; i++) {
+            pool.execute(() -> {
+                try {
+                    System.out.println(Thread.currentThread().getName() + "线程开始睡眠");
+                    Thread.sleep(10000);
+                    System.out.println(Thread.currentThread().getName() + "线程睡眠完成");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
 
-        Domo o = domos.stream().filter(x -> "123".equals(x.getAaa())).findAny().get();
-        System.out.println(o);
+        System.out.println("主线程完成");
 
     }
 
