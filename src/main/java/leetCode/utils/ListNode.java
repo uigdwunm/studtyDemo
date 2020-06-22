@@ -20,4 +20,13 @@ public class ListNode {
 
         return head;
     }
+
+    public void print() {
+        System.out.print(val + ", ");
+        if (next != null) {
+            next.print();
+        } else {
+            System.out.println();
+        }
+    }
 }
