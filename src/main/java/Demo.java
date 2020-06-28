@@ -1,5 +1,6 @@
 import com.sun.deploy.util.StringUtils;
 import explain.HashMap;
+import org.openjdk.jol.info.ClassLayout;
 import threadPool.MyThreadPoolExecutor;
 
 import java.io.*;
@@ -21,21 +22,30 @@ import java.util.stream.Collectors;
 public class Demo {
 
     public static void main(String[] args) throws CloneNotSupportedException {
-        MyThreadPoolExecutor pool = MyThreadPoolExecutor.newFixedThreadPool(4);
-        for (int i = 0; i < 10; i++) {
-            pool.execute(() -> {
-                try {
-                    System.out.println(Thread.currentThread().getName() + "线程开始睡眠");
-                    Thread.sleep(10000);
-                    System.out.println(Thread.currentThread().getName() + "线程睡眠完成");
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
+        Object o = new Object();
+        ClassLayout classLayout = ClassLayout.parseInstance(o);
+        System.out.println(classLayout.toPrintable());
+        Thread thread = new Thread(() -> ttt(o));
+        Thread thread2 = new Thread(() -> ttt(o));
+        thread.start();
+        thread2.start();
+
+        System.out.println(classLayout.toPrintable());
+
+    }
+
+    private static void ttt(Object o) {
+        synchronized (o) {
+            ClassLayout classLayout = ClassLayout.parseInstance(o);
+            System.out.println(classLayout.toPrintable());
+            System.out.println("线程执行了");
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("执行完成");
         }
-
-        System.out.println("主线程完成");
-
     }
 
     private static long getMemory() {
