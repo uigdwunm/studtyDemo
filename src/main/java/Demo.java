@@ -1,5 +1,7 @@
 import com.sun.deploy.util.StringUtils;
 import explain.HashMap;
+import explain.LinkedHashMap;
+import explain.Map;
 import org.openjdk.jol.info.ClassLayout;
 import threadPool.MyThreadPoolExecutor;
 
@@ -10,6 +12,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 /**
@@ -21,16 +24,18 @@ import java.util.stream.Collectors;
  **/
 public class Demo {
 
-    public static void main(String[] args) throws CloneNotSupportedException {
-        Object o = new Object();
-        ClassLayout classLayout = ClassLayout.parseInstance(o);
-        System.out.println(classLayout.toPrintable());
-        Thread thread = new Thread(() -> ttt(o));
-        Thread thread2 = new Thread(() -> ttt(o));
-        thread.start();
-        thread2.start();
 
-        System.out.println(classLayout.toPrintable());
+    public static void main(String[] args) {
+
+        final Object lock = new Object();
+
+        for (int i = 0; i < 3; i++) {
+            new Thread(() -> ttt(lock)).start();
+        }
+
+        for (int i = 0; i < 3; i++) {
+            new Thread(() -> ddd(lock)).start();
+        }
 
     }
 
@@ -38,13 +43,24 @@ public class Demo {
         synchronized (o) {
             ClassLayout classLayout = ClassLayout.parseInstance(o);
             System.out.println(classLayout.toPrintable());
-            System.out.println("线程执行了");
+            System.out.println("线程ttt");
             try {
-                Thread.sleep(4000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("执行完成");
+//            System.out.println("执行完成");
+        }
+    }
+
+    private static void ddd(Object o) {
+        synchronized (o) {
+            System.out.println("线程ddd");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
