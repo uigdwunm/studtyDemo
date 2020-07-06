@@ -11,10 +11,22 @@ public class Domo implements Cloneable{
     private String aaa;
     private Date date;
     private String ccc;
+    private int ddd;
+
+    public Domo() {
+    }
 
     public String getAaa() {
         System.out.println("1");
         return aaa;
+    }
+
+    public int getDdd() {
+        return ddd;
+    }
+
+    public void setDdd(int ddd) {
+        this.ddd = ddd;
     }
 
     public void setAaa(String aaa) {

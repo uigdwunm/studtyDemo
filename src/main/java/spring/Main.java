@@ -8,9 +8,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
-                new AnnotationConfigApplicationContext("spring.testBean");
-        System.out.println(context.getDisplayName());
-        System.out.println();
+                new AnnotationConfigApplicationContext(MainConfig.class);
         for (String name : context.getBeanDefinitionNames()) {
             System.out.println(name);
             System.out.println("bean: " + context.getBean(name));

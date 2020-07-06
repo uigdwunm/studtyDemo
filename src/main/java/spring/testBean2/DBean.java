@@ -1,8 +1,8 @@
-package spring.testBean;
+package spring.testBean2;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 //@Scope()
-public class BBean {
+public class DBean {
 }

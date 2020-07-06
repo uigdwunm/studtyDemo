@@ -27,17 +27,22 @@ public class Demo {
 
     public static void main(String[] args) {
 
-        final Object lock = new Object();
+        String s1 = new String("你" + "好") ;
+        String s2 = s1.intern();
+        String s3 = "你好";
+        System.out.println(s2 == s3);
+        new StringBuilder().toString();
 
-        for (int i = 0; i < 3; i++) {
-            new Thread(() -> ttt(lock)).start();
-        }
-
-        for (int i = 0; i < 3; i++) {
-            new Thread(() -> ddd(lock)).start();
-        }
 
     }
+
+    private static void alloc() {
+        Domo domo = new Domo();
+        domo.setDdd(127);
+        domo.setCcc("fddddddddddddddddddddddddddddddddddddddddddsadfasdf;");
+//        domo.setDate(new Date());
+    }
+
 
     private static void ttt(Object o) {
         synchronized (o) {
