@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80fa4bae-e945-44ee-b54d-203f1b882371" name="Default Changelist" comment="初始化为maven项目">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjdk_jol_jol_core_0_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Solution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetCode/hard124/Solution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetCode/utils/TreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="80fa4bae-e945-44ee-b54d-203f1b882371" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetCode/Solution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/leetCode/utils/GsonUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/studtyDemo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/studtyDemo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/explain/HashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/explain/HashMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetCode/hard44/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetCode/hard44/Solution.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +47,7 @@
   <component name="ProjectId" id="1dbeiUMNcH4H70foNUYLGhkMq2X" />
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
-    <ConfirmationsSetting value="2" id="Add" />
+    <OptionsSetting value="false" id="更新" />
   </component>
   <component name="ProjectViewState">
     <option name="compactDirectories" value="true" />
@@ -63,6 +56,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GO_FMT" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -77,11 +72,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Facets" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.33647057" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Application.Demo">
     <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -91,12 +86,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SinglyLinkedList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="collectionDemo.linkedList.leetCodeDemo.SinglyLinkedList" />
+    <configuration name="GsonUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetCode.utils.GsonUtils" />
       <module name="studtyDemo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="collectionDemo.linkedList.leetCodeDemo.*" />
+          <option name="PATTERN" value="leetCode.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Solution (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetCode.hard44.Solution" />
+      <module name="studtyDemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetCode.hard44.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Solution (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="leetCode.Solution" />
+      <module name="studtyDemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="leetCode.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,27 +138,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TreeNode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="leetCode.utils.TreeNode" />
-      <module name="studtyDemo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="leetCode.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Demo" />
-        <item itemvalue="Application.Solution" />
-        <item itemvalue="Application.TreeNode" />
-        <item itemvalue="Application.SinglyLinkedList" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -163,7 +163,16 @@
       <workItem from="1557971953837" duration="600000" />
       <workItem from="1558055928857" duration="2897000" />
       <workItem from="1592698349119" duration="11259000" />
-      <workItem from="1593220594827" duration="724000" />
+      <workItem from="1593220594827" duration="1964000" />
+      <workItem from="1593222579680" duration="1679000" />
+      <workItem from="1593910854069" duration="1403000" />
+      <workItem from="1593913169078" duration="10098000" />
+      <workItem from="1594519858753" duration="52000" />
+      <workItem from="1594519925391" duration="67000" />
+      <workItem from="1594520003575" duration="6405000" />
+      <workItem from="1595119459232" duration="71000" />
+      <workItem from="1595119542978" duration="62000" />
+      <workItem from="1595119614691" duration="602000" />
     </task>
     <task id="LOCAL-00001" summary="初始化为maven项目">
       <created>1556099103037</created>
@@ -172,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1556099103037</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="提交">
+      <created>1593221521861</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593221521861</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,52 +196,79 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="初始化为maven项目" />
-    <option name="LAST_COMMIT_MESSAGE" value="初始化为maven项目" />
+    <MESSAGE value="提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交" />
   </component>
   <component name="WindowStateProjectService">
     <state x="773" y="257" key="#com.intellij.ide.util.MemberChooser" timestamp="1592708931188">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="773" y="257" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1592708931188" />
-    <state width="2005" height="376" key="GridCell.Tab.0.bottom" timestamp="1592710702239">
+    <state x="780" y="254" key="#xdebugger.evaluate" timestamp="1593915301474">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1592710702239" />
-    <state width="2005" height="376" key="GridCell.Tab.0.center" timestamp="1592710702239">
+    <state x="780" y="254" key="#xdebugger.evaluate/0.0.2048.1112@0.0.2048.1112" timestamp="1593915301474" />
+    <state x="623" y="119" key="CommitChangelistDialog2" timestamp="1593221521112">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1592710702239" />
-    <state width="2005" height="376" key="GridCell.Tab.0.left" timestamp="1592710702239">
+    <state x="623" y="119" key="CommitChangelistDialog2/0.0.2048.1112@0.0.2048.1112" timestamp="1593221521112" />
+    <state x="198" y="94" key="DiffContextDialog" timestamp="1593221458046">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1592710702239" />
-    <state width="2005" height="376" key="GridCell.Tab.0.right" timestamp="1592710702239">
+    <state x="198" y="94" key="DiffContextDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1593221458046" />
+    <state width="2005" height="376" key="GridCell.Tab.0.bottom" timestamp="1594526415078">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1592710702239" />
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1592710702239">
+    <state width="2005" height="376" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
+    <state width="2005" height="376" key="GridCell.Tab.0.center" timestamp="1594526415078">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1592710702239" />
-    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1592710702239">
+    <state width="2005" height="376" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
+    <state width="2005" height="376" key="GridCell.Tab.0.left" timestamp="1594526415078">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1592710702239" />
-    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1592710702239">
+    <state width="2005" height="376" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
+    <state width="2005" height="376" key="GridCell.Tab.0.right" timestamp="1594526415078">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1592710702239" />
-    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1592710702239">
+    <state width="2005" height="376" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1594526415078">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1592710702239" />
-    <state x="526" y="200" key="SettingsEditor" timestamp="1593221329628">
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
+    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1594526415078">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="526" y="200" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1593221329628" />
-    <state x="820" y="469" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593220621681">
+    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
+    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1594526415078">
       <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
+    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1594526415078">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
+    <state x="198" y="93" key="MergeDialog" timestamp="1593912257715">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="198" y="93" key="MergeDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1593912257715" />
+    <state x="526" y="202" key="SettingsEditor" timestamp="1595119604541">
+      <screen x="0" y="0" width="2048" height="1122" />
+    </state>
+    <state x="526" y="200" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1594520010059" />
+    <state x="526" y="202" key="SettingsEditor/0.0.2048.1122@0.0.2048.1122" timestamp="1595119604541" />
+    <state x="617" y="289" key="Vcs.Push.Dialog.v2" timestamp="1593221526400">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="617" y="289" key="Vcs.Push.Dialog.v2/0.0.2048.1112@0.0.2048.1112" timestamp="1593221526400" />
+    <state x="820" y="473" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595119584041">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state x="820" y="469" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2048.1112@0.0.2048.1112" timestamp="1593220621681" />
+    <state x="820" y="473" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2048.1122@0.0.2048.1122" timestamp="1595119584041" />
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup" timestamp="1593922344007">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1593922344007" />
   </component>
 </project>

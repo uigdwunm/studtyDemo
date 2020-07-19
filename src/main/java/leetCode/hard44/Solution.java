@@ -2,55 +2,61 @@ package leetCode.hard44;
 
 public class Solution {
     public boolean isMatch(String s, String p) {
-        int sl = s.length();
-        int pl = p.length();
-        boolean[][] memo = new boolean[pl + 1][sl + 1];
-        char pc = p.charAt(0);
-        // 空对空
-        memo[0][0] = true;
-        if (pc == '*') {
-            for (int si = 0; si < sl; si++) {
-                memo[0][si + 1] = true;
-            }
-            for (int pi = 0; pi < pl; pi++) {
-                if (p.charAt(pi) == '*') {
-                    memo[pi + 1][0] = true;
-                } else {
-                    break;
-                }
-            }
+        if (s.length() == 0) {
+            return p.length() == 0 || "*".equals(p);
+        }
+        if (p.length() == 0) {
+            return false;
         }
 
-        for (int pi = 0; pi < pl; pi++) {
-            // 当前模式字符
-            pc = p.charAt(pi);
-            for (int si = 0; si < sl; si++) {
-                char sc = s.charAt(si);
-                if (pc == '*' && memo[pi][si + 1]) {
-                    memo[pi + 1][si + 1] = true;
-                } else if (memo[pi][si]) {
-                    // 上一个成功，才需要判断
-                    if (pc == sc || pc == '?') {
-                        memo[pi + 1][si + 1] = true;
-                    } else if (pc == '*') {
-                        do {
-                            memo[pi + 1][si + 1] = true;
-                            si++;
-                        } while (si < sl);
-                        break;
-                    }
+        return this.isMatch(s, 0, p, 0);
+    }
+
+    private boolean isMatch(String s, int si, String p, int pi) {
+        while (si != s.length() && pi != p.length()) {
+            char pc = p.charAt(pi);
+            char sc = s.charAt(si);
+            if (pc == sc || pc == '?') {
+                si++;
+                pi++;
+            } else if (pc == '*') {
+                if (pi == p.length() - 1) {
+                    return true;
                 }
+                pi++;
+                while (si < s.length()) {
+                    if (this.isMatch(s, si, p, pi)) {
+                        return true;
+                    }
+                    si++;
+                }
+                return false;
+            } else {
+                return false;
             }
         }
-        return memo[pl][sl];
+        if (si == s.length()) {
+            if (pi == p.length()) {
+                return true;
+            } else {
+                for (int i = pi; i < p.length(); i++) {
+                    if (p.charAt(i) != '*') {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        String s = "";
-        String p = "b";
+        String s = "bbbbbbbabbaabbabbbbaaabbabbabaaabbababbbabbbabaaabaab";
+        String p = "b*b*ab**ba*b**b***bba";
         boolean match = solution.isMatch(s, p);
         System.out.println(match);
+
 
     }
 }
