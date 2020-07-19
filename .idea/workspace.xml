@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80fa4bae-e945-44ee-b54d-203f1b882371" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetCode/Solution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/leetCode/utils/GsonUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/studtyDemo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/studtyDemo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leetCode/hard44/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetCode/hard44/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leetCode/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leetCode/Solution.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,20 +70,13 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.33647057" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.Demo">
-    <configuration name="Demo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Demo" />
-      <module name="studtyDemo" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Solution (3)">
     <configuration name="GsonUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetCode.utils.GsonUtils" />
       <module name="studtyDemo" />
@@ -125,6 +116,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Solution (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Solution" />
+      <module name="studtyDemo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Solution" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="leetCode.hard124.Solution" />
       <module name="studtyDemo" />
@@ -138,6 +136,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Solution (3)" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -172,7 +175,7 @@
       <workItem from="1594520003575" duration="6405000" />
       <workItem from="1595119459232" duration="71000" />
       <workItem from="1595119542978" duration="62000" />
-      <workItem from="1595119614691" duration="602000" />
+      <workItem from="1595119614691" duration="8071000" />
     </task>
     <task id="LOCAL-00001" summary="初始化为maven项目">
       <created>1556099103037</created>
@@ -188,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593221521861</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="提交">
+      <created>1595121013055</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595121013055</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,59 +218,73 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="780" y="254" key="#xdebugger.evaluate/0.0.2048.1112@0.0.2048.1112" timestamp="1593915301474" />
-    <state x="623" y="119" key="CommitChangelistDialog2" timestamp="1593221521112">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="402" y="120" width="1379" height="874" key="CommitChangelistDialog2" timestamp="1595121012437">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state x="623" y="119" key="CommitChangelistDialog2/0.0.2048.1112@0.0.2048.1112" timestamp="1593221521112" />
+    <state x="402" y="120" width="1379" height="874" key="CommitChangelistDialog2/0.0.2048.1122@0.0.2048.1122" timestamp="1595121012437" />
+    <state width="417" height="466" key="DebuggerActiveHint" timestamp="1595129646132">
+      <screen x="0" y="0" width="2048" height="1122" />
+    </state>
+    <state width="417" height="466" key="DebuggerActiveHint/0.0.2048.1122@0.0.2048.1122" timestamp="1595129646132" />
     <state x="198" y="94" key="DiffContextDialog" timestamp="1593221458046">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="198" y="94" key="DiffContextDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1593221458046" />
-    <state width="2005" height="376" key="GridCell.Tab.0.bottom" timestamp="1594526415078">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2005" height="379" key="GridCell.Tab.0.bottom" timestamp="1595131286703">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state width="2005" height="376" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
-    <state width="2005" height="376" key="GridCell.Tab.0.center" timestamp="1594526415078">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2005" height="379" key="GridCell.Tab.0.bottom/0.0.2048.1122@0.0.2048.1122" timestamp="1595131286703" />
+    <state width="2005" height="379" key="GridCell.Tab.0.center" timestamp="1595131286703">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state width="2005" height="376" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
-    <state width="2005" height="376" key="GridCell.Tab.0.left" timestamp="1594526415078">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2005" height="379" key="GridCell.Tab.0.center/0.0.2048.1122@0.0.2048.1122" timestamp="1595131286703" />
+    <state width="2005" height="379" key="GridCell.Tab.0.left" timestamp="1595131286703">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state width="2005" height="376" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
-    <state width="2005" height="376" key="GridCell.Tab.0.right" timestamp="1594526415078">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2005" height="379" key="GridCell.Tab.0.left/0.0.2048.1122@0.0.2048.1122" timestamp="1595131286703" />
+    <state width="2005" height="379" key="GridCell.Tab.0.right" timestamp="1595131286703">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state width="2005" height="376" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1594526415078">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2005" height="379" key="GridCell.Tab.0.right/0.0.2048.1122@0.0.2048.1122" timestamp="1595131286703" />
+    <state width="2005" height="379" key="GridCell.Tab.1.bottom" timestamp="1595131286836">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
-    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1594526415078">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2005" height="379" key="GridCell.Tab.1.bottom/0.0.2048.1122@0.0.2048.1122" timestamp="1595131286836" />
+    <state width="2005" height="379" key="GridCell.Tab.1.center" timestamp="1595131286836">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
-    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1594526415078">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2005" height="379" key="GridCell.Tab.1.center/0.0.2048.1122@0.0.2048.1122" timestamp="1595131286836" />
+    <state width="2005" height="379" key="GridCell.Tab.1.left" timestamp="1595131286836">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
-    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1594526415078">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state width="2005" height="379" key="GridCell.Tab.1.left/0.0.2048.1122@0.0.2048.1122" timestamp="1595131286836" />
+    <state width="2005" height="379" key="GridCell.Tab.1.right" timestamp="1595131286836">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1594526415078" />
+    <state width="2005" height="379" key="GridCell.Tab.1.right/0.0.2048.1122@0.0.2048.1122" timestamp="1595131286836" />
     <state x="198" y="93" key="MergeDialog" timestamp="1593912257715">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="198" y="93" key="MergeDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1593912257715" />
-    <state x="526" y="202" key="SettingsEditor" timestamp="1595119604541">
+    <state x="526" y="202" key="SettingsEditor" timestamp="1595121042712">
       <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state x="526" y="200" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1594520010059" />
-    <state x="526" y="202" key="SettingsEditor/0.0.2048.1122@0.0.2048.1122" timestamp="1595119604541" />
-    <state x="617" y="289" key="Vcs.Push.Dialog.v2" timestamp="1593221526400">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="526" y="202" key="SettingsEditor/0.0.2048.1122@0.0.2048.1122" timestamp="1595121042712" />
+    <state x="617" y="292" key="Vcs.Push.Dialog.v2" timestamp="1595126959556">
+      <screen x="0" y="0" width="2048" height="1122" />
     </state>
     <state x="617" y="289" key="Vcs.Push.Dialog.v2/0.0.2048.1112@0.0.2048.1112" timestamp="1593221526400" />
+    <state x="617" y="292" key="Vcs.Push.Dialog.v2/0.0.2048.1122@0.0.2048.1122" timestamp="1595126959556" />
     <state x="820" y="473" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595119584041">
       <screen x="0" y="0" width="2048" height="1122" />
     </state>
@@ -270,5 +294,16 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1593922344007" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Solution.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
