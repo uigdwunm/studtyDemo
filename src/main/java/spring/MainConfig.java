@@ -10,7 +10,7 @@ import spring.testBean2.DBean;
 
 @Configuration
 @ComponentScan(basePackages = {"spring.testBean"})
-@Import({MainConfig2.class})
+//@Import({MainConfig2.class})
 public class MainConfig {
 
 //    @Bean

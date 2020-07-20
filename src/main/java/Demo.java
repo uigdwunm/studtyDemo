@@ -26,13 +26,10 @@ public class Demo {
 
 
     public static void main(String[] args) {
-
-        String s1 = new String("你" + "好") ;
-        String s2 = s1.intern();
-        String s3 = "你好";
-        System.out.println(s2 == s3);
-        new StringBuilder().toString();
-
+        Random random = new Random();
+        for (int i = 0; i < 100; i++) {
+            System.out.println(random.nextInt(19));
+        }
 
     }
 
