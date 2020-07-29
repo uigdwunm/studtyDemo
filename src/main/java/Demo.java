@@ -26,17 +26,16 @@ public class Demo {
 
 
     public static void main(String[] args) {
-        Random random = new Random();
-        for (int i = 0; i < 100; i++) {
-            System.out.println(random.nextInt(19));
-        }
+        System.out.println(new Date(1595896397773L));
+        Queue<Integer> mQ = new LinkedList<>();
+
 
     }
 
     private static void alloc() {
         Domo domo = new Domo();
         domo.setDdd(127);
-        domo.setCcc("fddddddddddddddddddddddddddddddddddddddddddsadfasdf;");
+        domo.setCcc("fdddd;");
 //        domo.setDate(new Date());
     }
 
