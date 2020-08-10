@@ -13,6 +13,9 @@ public class GsonUtils {
     private static final Type intArrArrtype = new TypeToken<int[][]>() {
     }.getType();
 
+    private static final Type charArrArrtype = new TypeToken<char[][]>() {
+    }.getType();
+
     public static int[][] convertToIntArrArr(String json) {
         return convertToIntArrArr(json,true);
     }
@@ -22,6 +25,22 @@ public class GsonUtils {
         if (isPrint) {
             System.out.println('{');
             for (int[] ints : arr) {
+                System.out.println(Arrays.toString(ints));
+            }
+            System.out.println('}');
+        }
+        return arr;
+    }
+
+    public static char[][] convertToCharArrArr(String json) {
+        return convertToCharArrArr(json,true);
+    }
+
+    public static char[][] convertToCharArrArr(String json, boolean isPrint) {
+        char[][] arr = gson.fromJson(json, charArrArrtype);
+        if (isPrint) {
+            System.out.println('{');
+            for (char[] ints : arr) {
                 System.out.println(Arrays.toString(ints));
             }
             System.out.println('}');

@@ -2,6 +2,7 @@ import com.sun.deploy.util.StringUtils;
 import explain.HashMap;
 import explain.LinkedHashMap;
 import explain.Map;
+import explain.concurrent.ConcurrentHashMap;
 import org.openjdk.jol.info.ClassLayout;
 import threadPool.MyThreadPoolExecutor;
 
@@ -26,9 +27,10 @@ public class Demo {
 
 
     public static void main(String[] args) {
-        System.out.println(new Date(1595896397773L));
-        Queue<Integer> mQ = new LinkedList<>();
+        ConcurrentHashMap<String, Object> map = new ConcurrentHashMap<>();
+        map.put("123", 1234);
 
+        System.out.println(map);
 
     }
 
