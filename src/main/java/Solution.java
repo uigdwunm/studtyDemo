@@ -1,80 +1,86 @@
 import explain.HashMap;
 import explain.Map;
+import explain.concurrent.aqs.Condition;
+import explain.concurrent.aqs.rttl.ReentrantLock;
 import leetCode.utils.GsonUtils;
 import org.omg.CORBA.INTERNAL;
 
 import java.util.*;
 
 public class Solution {
-    private List<Integer>[] memo;
-    Map<Integer, Integer> map;
+    private class Node{
+        int val;
+        int left;
+        int right;
 
-    public int[] countSubTrees(int n, int[][] edges, String labels) {
-        memo = new LinkedList[n];
-        map = new HashMap<>(n, 1F);
-        for (int[] edge : edges) {
-            this.save(edge[0], edge[1]);
-            this.save(edge[1], edge[0]);
-        }
-
-        // 单向的摘出来
-        this.find(0, 0);
-        int[] result = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            List<Integer> list = memo[i];
-            if (list.size() == 1) {
-                this.to(labels.charAt(i), i, result, map, labels);
-            }
-        }
-
-        return result;
-    }
-
-    // 单向的摘出来
-    private void find(int k, int l) {
-        List<Integer> tList = memo[k];
-        for (Integer integer : tList) {
-            if (integer != l) {
-                map.put(integer, k);
-                this.find(integer, k);
-            }
+        public Node(int val, int left, int right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
         }
     }
-
-    private void save(int k, int v) {
-        List<Integer> list = memo[k];
-        if (list != null) {
-            list.add(v);
-        } else {
-            list = new LinkedList<>();
-            list.add(v);
-            memo[k] = list;
+    private Node node(int l, int r) {
+        return new Node(position[r] - position[l] ,l, r);
+    }
+    int[] position;
+    Node[] nodes;
+    TreeSet<Node> treeSet;
+    public int maxDistance(int[] position, int m) {
+        Arrays.sort(position);
+        if (m < 3) {
+            return position[position.length - 1] - position[0];
+        }
+        this.position = position;
+        this.treeSet = new TreeSet<>(new Comparator<Node>() {
+            @Override
+            public int compare(Node o1, Node o2) {
+                int compare = Integer.compare(o1.val, o2.val);
+                if (compare == 0) {
+                    compare = Integer.compare(o2.left, o1.left);
+                }
+                return compare;
+            }
+        });
+        this.nodes = new Node[position.length];
+        int i = 1;
+        while (i < m) {
+            Node node = this.node(i - 1, i);
+            treeSet.add(node);
+            nodes[i] = node;
+            ++i;
         }
 
+        while (i < position.length) {
+            int distance = position[i] - position[i - 1];
+            if (distance > treeSet.first().val) {
+                Node node = treeSet.pollFirst();
+                Node newNode = this.node(i - 1, i);
+
+                this.alter(node, newNode);
+                ReentrantLock reentrantLock = new ReentrantLock();
+                Condition condition = reentrantLock.newCondition();
+                condition.signal();
+            }
+            ++i;
+        }
+
+        return treeSet.first().val;
     }
 
-    private void to(char c, int i, int[] result, Map<Integer, Integer> map, String labels) {
-        result[i] += 1;
-        Integer t = map.get(i);
-        while (t != null) {
-            if (result[t] == 0) {
-                this.to(labels.charAt(t), t, result, map, labels);
-            }
-            if (labels.charAt(t) == c) {
-                result[t] += 1;
-            }
-
-            t = map.get(t);
+    private void alter(Node o, Node n) {
+        this.treeSet.add(n);
+        n = nodes[o.left];
+        if (n != null) {
+            treeSet.remove(n);
+            n.right = o.right;
+            n.val = position[n.right] - position[n.left];
+            this.treeSet.add(n);
         }
     }
 
     public static void main(String[] args) {
-        ArrayList<Integer>[] arrayLists = new ArrayList[1];
-        arrayLists[0] = new ArrayList<>();
         Solution solution = new Solution();
-        int[][] ints = GsonUtils.convertToIntArrArr("[[0,2],[0,3],[1,2]]");
-        int[] abaedcds = solution.countSubTrees(4, ints, "aeed");
-        System.out.println(Arrays.toString(abaedcds));
+        int i = solution.maxDistance(new int[]{10,4,3,2,1,1000000000}, 3);
+        System.out.println(i);
     }
 }

@@ -19,9 +19,8 @@ public class UnsafeInstance {
             field.setAccessible(true);
             return (Unsafe) field.get(null);
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException("获取Unsafe失败");
         }
-        return null;
     }
 
 }

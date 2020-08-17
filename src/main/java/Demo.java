@@ -14,6 +14,8 @@ import java.net.URLDecoder;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiFunction;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -27,11 +29,14 @@ public class Demo {
 
 
     public static void main(String[] args) {
-        ConcurrentHashMap<String, Object> map = new ConcurrentHashMap<>();
-        map.put("123", 1234);
+        String s = "asdfasdf{{first.DATA}}\n" +
+                "asdfasd{{Topic.DATA}}";
 
-        System.out.println(map);
-
+        Pattern p =Pattern.compile("\\{\\{(.*?).DATA}}");
+        Matcher m = p.matcher(s);
+        while (m.find()) {
+            System.out.println(m.group(1));
+        }
     }
 
     private static void alloc() {
