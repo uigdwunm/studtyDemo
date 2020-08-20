@@ -27,16 +27,13 @@ import java.util.stream.Collectors;
  **/
 public class Demo {
 
-
     public static void main(String[] args) {
-        String s = "asdfasdf{{first.DATA}}\n" +
-                "asdfasd{{Topic.DATA}}";
+        long num = Long.parseUnsignedLong("NMDCN0000100", 32);
+        System.out.println(num);
+        num++;
+        String s = Long.toUnsignedString(num, 32);
+        System.out.println(s);
 
-        Pattern p =Pattern.compile("\\{\\{(.*?).DATA}}");
-        Matcher m = p.matcher(s);
-        while (m.find()) {
-            System.out.println(m.group(1));
-        }
     }
 
     private static void alloc() {

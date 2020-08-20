@@ -2,6 +2,7 @@ package explain.concurrent.test;
 
 import explain.concurrent.aqs.Condition;
 import explain.concurrent.aqs.rttl.ReentrantLock;
+import explain.concurrent.aqs.sp.Semaphore;
 
 import java.util.LinkedList;
 import java.util.concurrent.BrokenBarrierException;
@@ -16,13 +17,15 @@ public class AQSDemo {
         aqsDemo.reentrantLockTest();
     }
 
+    private void semaphoreTest() throws InterruptedException {
+        Semaphore semaphore = new Semaphore(2);
+        semaphore.acquire(2);
+        semaphore.release();
+    }
 
     private int num = 0;
 
     private void reentrantLockTest() throws InterruptedException {
-        LinkedList<Character> list = new LinkedList<>();
-        char c = 'a';
-        list.push(c);
         int threadNum = 2;
         ReentrantLock reentrantLock = new ReentrantLock();
         Condition condition = reentrantLock.newCondition();

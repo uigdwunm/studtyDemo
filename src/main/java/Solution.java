@@ -80,7 +80,8 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int i = solution.maxDistance(new int[]{10,4,3,2,1,1000000000}, 3);
+
+        int i = solution.maxDistance(new int[] {10,4,3,2,1,1000000000}, 3);
         System.out.println(i);
     }
 }

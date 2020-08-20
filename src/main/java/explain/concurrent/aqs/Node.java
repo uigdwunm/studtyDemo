@@ -88,6 +88,7 @@ final class Node {
     /** waitStatus value to indicate thread has cancelled */
     static final int CANCELLED =  1;
     /** waitStatus value to indicate successor's thread needs unparking */
+    // 这里是为后继节点保存状态，意为下一个节点可以被唤醒
     static final int SIGNAL    = -1;
     /** waitStatus value to indicate thread is waiting on condition */
     static final int CONDITION = -2;
