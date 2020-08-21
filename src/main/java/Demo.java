@@ -28,6 +28,7 @@ import java.util.stream.Collectors;
 public class Demo {
 
     public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<>();
         long num = Long.parseUnsignedLong("NMDCN0000100", 32);
         System.out.println(num);
         num++;

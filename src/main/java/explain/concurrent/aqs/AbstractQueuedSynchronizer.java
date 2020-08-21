@@ -1343,8 +1343,9 @@ public abstract class AbstractQueuedSynchronizer
      * #tryAcquireShared}) then it is guaranteed that the current thread
      * is not the first queued thread.  Used only as a heuristic in
      * ReentrantReadWriteLock.
+     * 这里本来是default，改成了protected权限
      */
-    final boolean apparentlyFirstQueuedIsExclusive() {
+    protected final boolean apparentlyFirstQueuedIsExclusive() {
         Node h, s;
         return (h = head) != null &&
             (s = h.next)  != null &&
@@ -1584,7 +1585,6 @@ public abstract class AbstractQueuedSynchronizer
             // 进入这里有两种可能：
             // 1,前驱节点是取消状态
             // 2,前驱节点更改为可唤醒下一个状态失败了
-            // TODO 这里不知道为啥
             LockSupport.unpark(node.thread);
         }
         return true;
