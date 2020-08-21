@@ -21,15 +21,20 @@ final class Sync extends AbstractQueuedSynchronizer {
         return (getState() == 0) ? 1 : -1;
     }
 
+    /**
+     * 这里是获取一个通行的机会
+     **/
     protected boolean tryReleaseShared(int releases) {
         // Decrement count; signal when transition to zero
         for (;;) {
             int c = getState();
-            if (c == 0)
+            if (c == 0) {
                 return false;
-            int nextc = c-1;
-            if (compareAndSetState(c, nextc))
+            }
+            int nextc = c - 1;
+            if (compareAndSetState(c, nextc)) {
                 return nextc == 0;
+            }
         }
     }
 }

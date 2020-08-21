@@ -486,16 +486,36 @@ public abstract class AbstractQueuedSynchronizer
         for (;;) {
             Node h = head;
             if (h != null && h != tail) {
-                int ws = h.waitStatus;
-                if (ws == Node.SIGNAL) {
-                    if (!compareAndSetWaitStatus(h, Node.SIGNAL, 0)) {
-                        continue;            // loop to recheck cases
-                    }
-                    unparkSuccessor(h);
-                } else if (ws == 0 && !compareAndSetWaitStatus(h, 0, Node.PROPAGATE))
-                    continue;                // loop on failed CAS
+                // 头结点状态，只有 SIGNAL状态和 0状态会处理，其他的直接判断结束条件
+                switch (h.waitStatus) {
+                    case Node.SIGNAL:
+                        // 头结点是SIGNAL状态会进到这里
+                        if (!compareAndSetWaitStatus(h, Node.SIGNAL, 0)) {
+                            // 状态可能被其他线程改变了
+                            // cas失败了会直接开启下个循环
+                            continue;            // loop to recheck cases
+                        }
+                        // 这里是唤醒head节点
+                        unparkSuccessor(h);
+                        break;
+                    case 0:
+                        // 头结点是0状态会进到这里
+                        // 这里会把头结点改成PROPAGATE状态
+                        // 全文只有这一个地方引用了传播状态，所以这个状态应该没啥大用，只是为了区分一下SIGNAL状态
+                        if (!compareAndSetWaitStatus(h, 0, Node.PROPAGATE)) {
+                            // 状态可能被其他线程改变了
+                            // cas失败了会直接开启下个循环
+                            continue;                // loop on failed CAS
+                        }
+                        break;
+                    default:
+                        // 其他状态直接进下面的结束判断，什么都不做
+                }
             }
+
+            // 唯一的循环结束条件
             if (h == head) {
+                // 如果经过上面一系列代码，头节点没有被其他线程改动，那么就可以停止循环了。
                 // loop if head changed
                 break;
             }
@@ -532,6 +552,7 @@ public abstract class AbstractQueuedSynchronizer
         if (propagate > 0 || h == null || h.waitStatus < 0 || (h = head) == null || h.waitStatus < 0) {
             Node s = node.next;
             if (s == null || s.isShared()) {
+                // TODO 这就是传播了，也不知道是干啥
                 doReleaseShared();
             }
         }
@@ -818,6 +839,7 @@ public abstract class AbstractQueuedSynchronizer
                     int r = tryAcquireShared(arg);
                     if (r >= 0) {
                         // 获取锁成功
+                        // 设置头结点和传播？
                         setHeadAndPropagate(node, r);
                         p.next = null; // help GC
                         failed = false;
@@ -847,8 +869,9 @@ public abstract class AbstractQueuedSynchronizer
      */
     private boolean doAcquireSharedNanos(int arg, long nanosTimeout)
             throws InterruptedException {
-        if (nanosTimeout <= 0L)
+        if (nanosTimeout <= 0L) {
             return false;
+        }
         final long deadline = System.nanoTime() + nanosTimeout;
         final Node node = addWaiter(Node.SHARED);
         boolean failed = true;
@@ -865,13 +888,17 @@ public abstract class AbstractQueuedSynchronizer
                     }
                 }
                 nanosTimeout = deadline - System.nanoTime();
-                if (nanosTimeout <= 0L)
+                if (nanosTimeout <= 0L) {
                     return false;
-                if (shouldParkAfterFailedAcquire(p, node) &&
-                    nanosTimeout > spinForTimeoutThreshold)
-                    LockSupport.parkNanos(this, nanosTimeout);
-                if (Thread.interrupted())
+                }
+                if (shouldParkAfterFailedAcquire(p, node)) {
+                    if (nanosTimeout > spinForTimeoutThreshold) {
+                        LockSupport.parkNanos(this, nanosTimeout);
+                    }
+                }
+                if (Thread.interrupted()) {
                     throw new InterruptedException();
+                }
             }
         } finally {
             if (failed)
@@ -1126,8 +1153,9 @@ public abstract class AbstractQueuedSynchronizer
      *        and can represent anything you like.
      */
     public final void acquireShared(int arg) {
-        if (tryAcquireShared(arg) < 0)
+        if (tryAcquireShared(arg) < 0) {
             doAcquireShared(arg);
+        }
     }
 
     /**
@@ -1196,6 +1224,7 @@ public abstract class AbstractQueuedSynchronizer
      */
     public final boolean releaseShared(int arg) {
         if (tryReleaseShared(arg)) {
+            // 成功释放锁会进来，唤醒后继节点
             doReleaseShared();
             return true;
         }
@@ -2054,8 +2083,9 @@ public abstract class AbstractQueuedSynchronizer
             }
             if (acquireQueued(node, savedState) && interruptMode != THROW_IE)
                 interruptMode = REINTERRUPT;
-            if (node.nextWaiter != null)
+            if (node.nextWaiter != null) {
                 unlinkCancelledWaiters();
+            }
             if (interruptMode != 0)
                 reportInterruptAfterWait(interruptMode);
             return !timedout;
