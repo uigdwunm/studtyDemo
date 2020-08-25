@@ -1,22 +1,7 @@
-import com.sun.deploy.util.StringUtils;
-import explain.HashMap;
-import explain.LinkedHashMap;
-import explain.Map;
-import explain.concurrent.ConcurrentHashMap;
 import org.openjdk.jol.info.ClassLayout;
-import threadPool.MyThreadPoolExecutor;
 
 import java.io.*;
-import java.math.BigDecimal;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLDecoder;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.BiFunction;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 /**
  * Description TODO
@@ -29,6 +14,7 @@ public class Demo {
 
     public static void main(String[] args) {
         LinkedList<Integer> list = new LinkedList<>();
+
         long num = Long.parseUnsignedLong("NMDCN0000100", 32);
         System.out.println(num);
         num++;

@@ -1,4 +1,4 @@
-package explain;
+package explain.map;
 
 /*
  * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.

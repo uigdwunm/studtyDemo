@@ -1,4 +1,4 @@
-package explain;
+package explain.map;
 /*
  * Copyright (c) 1997, 2013, Oracle and/or its affiliates. All rights reserved.
  * ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
@@ -25,7 +25,6 @@ package explain;
  */
 
 import java.util.*;
-import java.util.Map.Entry;
 
 /**
  * This class provides a skeletal implementation of the <tt>Map</tt>
@@ -367,19 +366,19 @@ public abstract class AbstractMap<K,V> implements Map<K,V> {
                 }
 
                 public int size() {
-                    return explain.AbstractMap.this.size();
+                    return AbstractMap.this.size();
                 }
 
                 public boolean isEmpty() {
-                    return explain.AbstractMap.this.isEmpty();
+                    return AbstractMap.this.isEmpty();
                 }
 
                 public void clear() {
-                    explain.AbstractMap.this.clear();
+                    AbstractMap.this.clear();
                 }
 
                 public boolean contains(Object k) {
-                    return explain.AbstractMap.this.containsKey(k);
+                    return AbstractMap.this.containsKey(k);
                 }
             };
             keySet = ks;
@@ -426,19 +425,19 @@ public abstract class AbstractMap<K,V> implements Map<K,V> {
                 }
 
                 public int size() {
-                    return explain.AbstractMap.this.size();
+                    return AbstractMap.this.size();
                 }
 
                 public boolean isEmpty() {
-                    return explain.AbstractMap.this.isEmpty();
+                    return AbstractMap.this.isEmpty();
                 }
 
                 public void clear() {
-                    explain.AbstractMap.this.clear();
+                    AbstractMap.this.clear();
                 }
 
                 public boolean contains(Object v) {
-                    return explain.AbstractMap.this.containsValue(v);
+                    return AbstractMap.this.containsValue(v);
                 }
             };
             values = vals;
@@ -571,7 +570,7 @@ public abstract class AbstractMap<K,V> implements Map<K,V> {
      * @return a shallow copy of this map
      */
     protected Object clone() throws CloneNotSupportedException {
-        explain.AbstractMap<?,?> result = (explain.AbstractMap<?,?>)super.clone();
+        AbstractMap<?,?> result = (AbstractMap<?,?>)super.clone();
         result.keySet = null;
         result.values = null;
         return result;

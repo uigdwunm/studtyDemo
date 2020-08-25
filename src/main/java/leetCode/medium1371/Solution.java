@@ -1,7 +1,5 @@
 package leetCode.medium1371;
 
-import explain.HashMap;
-
 public class Solution {
     public int findTheLongestSubstring(String s) {
         int result = 0;

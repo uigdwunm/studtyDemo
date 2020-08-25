@@ -1,4 +1,4 @@
-package explain;
+package explain.map;
 
 /* ------------------------------------------------------------ */
 // Tree bins
@@ -107,6 +107,7 @@ final class TreeNode<K, V> extends LinkedHashMap.Entry<K, V> {
     }
 
     /**
+     * 终极比较手段
      * Tie-breaking utility for ordering insertions when equal
      * hashCodes and non-comparable. We don't require a total
      * order, just a consistent insertion rule to maintain
@@ -114,12 +115,21 @@ final class TreeNode<K, V> extends LinkedHashMap.Entry<K, V> {
      * necessary simplifies testing a bit.
      */
     static int tieBreakOrder(Object a, Object b) {
-        int d;
-        if (a == null || b == null ||
-                (d = a.getClass().getName().
-                        compareTo(b.getClass().getName())) == 0)
-            d = (System.identityHashCode(a) <= System.identityHashCode(b) ?
-                    -1 : 1);
+        if (a == null || b == null) {
+            if (System.identityHashCode(a) <= System.identityHashCode(b)) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }
+        int d = a.getClass().getName().compareTo(b.getClass().getName());
+        if (d == 0) {
+            if (System.identityHashCode(a) <= System.identityHashCode(b)) {
+                return -1;
+            } else {
+                return 1;
+            }
+        }
         return d;
     }
 

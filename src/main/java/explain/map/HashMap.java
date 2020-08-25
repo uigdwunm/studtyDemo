@@ -1,4 +1,4 @@
-package explain;
+package explain.map;
 
 /*
  * Copyright (c) 1997, 2017, Oracle and/or its affiliates. All rights reserved.
@@ -294,8 +294,8 @@ public class HashMap<K, V> extends AbstractMap<K, V>
             if ((c = x.getClass()) == String.class) // bypass checks
                 return c;
             if ((ts = c.getGenericInterfaces()) != null) {
-                for (int i = 0; i < ts.length; ++i) {
-                    if (((t = ts[i]) instanceof ParameterizedType) &&
+                for (Type type : ts) {
+                    if (((t = type) instanceof ParameterizedType) &&
                             ((p = (ParameterizedType) t).getRawType() ==
                                     Comparable.class) &&
                             (as = p.getActualTypeArguments()) != null &&
