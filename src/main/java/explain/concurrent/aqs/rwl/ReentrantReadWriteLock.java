@@ -441,10 +441,12 @@ public class ReentrantReadWriteLock implements ReadWriteLock, Serializable {
      * @throws NullPointerException if the condition is null
      */
     public boolean hasWaiters(Condition condition) {
-        if (condition == null)
+        if (condition == null) {
             throw new NullPointerException();
-        if (!(condition instanceof AbstractQueuedSynchronizer.ConditionObject))
+        }
+        if (!(condition instanceof AbstractQueuedSynchronizer.ConditionObject)) {
             throw new IllegalArgumentException("not owner");
+        }
         return sync.hasWaiters((AbstractQueuedSynchronizer.ConditionObject)condition);
     }
 
@@ -464,10 +466,12 @@ public class ReentrantReadWriteLock implements ReadWriteLock, Serializable {
      * @throws NullPointerException if the condition is null
      */
     public int getWaitQueueLength(Condition condition) {
-        if (condition == null)
+        if (condition == null) {
             throw new NullPointerException();
-        if (!(condition instanceof AbstractQueuedSynchronizer.ConditionObject))
+        }
+        if (!(condition instanceof AbstractQueuedSynchronizer.ConditionObject)) {
             throw new IllegalArgumentException("not owner");
+        }
         return sync.getWaitQueueLength((AbstractQueuedSynchronizer.ConditionObject)condition);
     }
 
@@ -489,10 +493,12 @@ public class ReentrantReadWriteLock implements ReadWriteLock, Serializable {
      * @throws NullPointerException if the condition is null
      */
     protected Collection<Thread> getWaitingThreads(Condition condition) {
-        if (condition == null)
+        if (condition == null) {
             throw new NullPointerException();
-        if (!(condition instanceof AbstractQueuedSynchronizer.ConditionObject))
+        }
+        if (!(condition instanceof AbstractQueuedSynchronizer.ConditionObject)) {
             throw new IllegalArgumentException("not owner");
+        }
         return sync.getWaitingThreads((AbstractQueuedSynchronizer.ConditionObject)condition);
     }
 
@@ -510,8 +516,7 @@ public class ReentrantReadWriteLock implements ReadWriteLock, Serializable {
         int w = Sync.exclusiveCount(c);
         int r = Sync.sharedCount(c);
 
-        return super.toString() +
-            "[Write locks = " + w + ", Read locks = " + r + "]";
+        return super.toString() + "[Write locks = " + w + ", Read locks = " + r + "]";
     }
 
 }

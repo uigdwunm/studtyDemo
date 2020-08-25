@@ -221,13 +221,11 @@ abstract class Sync extends AbstractQueuedSynchronizer {
          */
         Thread current = Thread.currentThread();
         int c = getState();
-        if (exclusiveCount(c) != 0 &&
-                getExclusiveOwnerThread() != current)
+        if (exclusiveCount(c) != 0 && getExclusiveOwnerThread() != current) {
             return -1;
+        }
         int r = sharedCount(c);
-        if (!readerShouldBlock() &&
-                r < MAX_COUNT &&
-                compareAndSetState(c, c + SHARED_UNIT)) {
+        if (!readerShouldBlock() && r < MAX_COUNT && compareAndSetState(c, c + SHARED_UNIT)) {
             if (r == 0) {
                 firstReader = current;
                 firstReaderHoldCount = 1;
@@ -235,10 +233,11 @@ abstract class Sync extends AbstractQueuedSynchronizer {
                 firstReaderHoldCount++;
             } else {
                 HoldCounter rh = cachedHoldCounter;
-                if (rh == null || rh.tid != getThreadId(current))
+                if (rh == null || rh.tid != getThreadId(current)) {
                     cachedHoldCounter = rh = readHolds.get();
-                else if (rh.count == 0)
+                } else if (rh.count == 0) {
                     readHolds.set(rh);
+                }
                 rh.count++;
             }
             return 1;
