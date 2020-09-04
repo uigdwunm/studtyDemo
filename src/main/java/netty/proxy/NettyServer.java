@@ -1,12 +1,15 @@
-package netty.demo;
+package netty.proxy;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.http.*;
-import netty.proxy.HttpProxyServerHandler;
+import io.netty.handler.codec.http.HttpObjectAggregator;
+import io.netty.handler.codec.http.HttpServerCodec;
 
 
 public class NettyServer {
@@ -34,17 +37,6 @@ public class NettyServer {
                             pipeline.addLast(new HttpServerCodec());
                             pipeline.addLast(new HttpObjectAggregator(65535));
                             pipeline.addLast(new HttpProxyServerHandler());
-//                            pipeline.addLast(new ChannelInboundHandlerAdapter() {
-//                                @Override
-//                                public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-//                                    System.out.println("一个连接");
-//                                    ByteBuf byteBuf = (ByteBuf) msg;
-//                                    String s = byteBuf.toString(StandardCharsets.UTF_8);
-//                                    System.out.println(s);
-//                                    super.channelRead(ctx, msg);
-//                                }
-//                            });
-
                         }
                     });
             System.out.println("服务端启动。。");

@@ -1421,32 +1421,41 @@ public class HashMap<K, V> extends AbstractMap<K, V>
         return v;
     }
 
+    /**
+     * 不存在的节点直接赋值，已存在的节点则通过指定的merge方式进行处理
+     * @param key 指定的key，这个key可能已存在
+     * @param value 传入一个不为null的value，如果已存在的value为null则替换，否则执行merge函数
+     * @param remappingFunction 表示merge方式的函数，如果最终返回的值为null，这个节点会被删除
+     *
+     **/
     @Override
     public V merge(K key, V value,
                    BiFunction<? super V, ? super V, ? extends V> remappingFunction) {
-        if (value == null)
+        if (value == null) {
             throw new NullPointerException();
-        if (remappingFunction == null)
+        }
+        if (remappingFunction == null) {
             throw new NullPointerException();
+        }
         int hash = hash(key);
-        Node<K, V>[] tab;
-        Node<K, V> first;
-        int n, i;
+        Node<K, V>[] tab = table;
         int binCount = 0;
         TreeNode<K, V> t = null;
         Node<K, V> old = null;
-        if (size > threshold || (tab = table) == null ||
-                (n = tab.length) == 0)
-            n = (tab = resize()).length;
-        if ((first = tab[i = (n - 1) & hash]) != null) {
-            if (first instanceof TreeNode)
+        if (size > threshold || tab == null || tab.length == 0) {
+            tab = resize();
+        }
+        int n = tab.length;
+        // i表示在数组中的位置
+        int i = (n - 1) & hash;
+        Node<K, V> first = tab[i];
+        if (first != null) {
+            if (first instanceof TreeNode) {
                 old = (t = (TreeNode<K, V>) first).getTreeNode(hash, key);
-            else {
+            } else {
                 Node<K, V> e = first;
-                K k;
                 do {
-                    if (e.hash == hash &&
-                            ((k = e.key) == key || (key != null && key.equals(k)))) {
+                    if (e.hash == hash && Objects.equals(e.key, key)) {
                         old = e;
                         break;
                     }
@@ -1455,30 +1464,33 @@ public class HashMap<K, V> extends AbstractMap<K, V>
             }
         }
         if (old != null) {
+            // 进入这里说明这个key对应的节点存在
             V v;
-            if (old.value != null)
+            if (old.value != null) {
+                // 如果已存在的节点对应的旧值不为空则执行merge
                 v = remappingFunction.apply(old.value, value);
-            else
+            } else {
+                // 已存在的节点对应的旧值为null，直接替换新值
                 v = value;
+            }
             if (v != null) {
                 old.value = v;
                 afterNodeAccess(old);
             } else
+                // 最终的值为null，那么会将节点删除掉
                 removeNode(hash, key, null, false, true);
             return v;
         }
-        if (value != null) {
-            if (t != null)
-                t.putTreeVal(this, tab, hash, key, value);
-            else {
-                tab[i] = newNode(hash, key, value, first);
-                if (binCount >= TREEIFY_THRESHOLD - 1)
-                    treeifyBin(tab, hash);
-            }
-            ++modCount;
-            ++size;
-            afterNodeInsertion(true);
+        if (t != null) {
+            t.putTreeVal(this, tab, hash, key, value);
+        } else {
+            tab[i] = newNode(hash, key, value, first);
+            if (binCount >= TREEIFY_THRESHOLD - 1)
+                treeifyBin(tab, hash);
         }
+        ++modCount;
+        ++size;
+        afterNodeInsertion(true);
         return value;
     }
 

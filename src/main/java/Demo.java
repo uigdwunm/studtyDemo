@@ -1,7 +1,14 @@
 import org.openjdk.jol.info.ClassLayout;
 
 import java.io.*;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
+import java.time.temporal.TemporalAdjusters;
 import java.util.*;
+import java.util.concurrent.Executors;
 
 /**
  * Description TODO
@@ -13,13 +20,10 @@ import java.util.*;
 public class Demo {
 
     public static void main(String[] args) {
-        LinkedList<Integer> list = new LinkedList<>();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm:ss");
+        LocalDateTime parse = LocalDateTime.parse("2020-9-2 15:51:51", dateTimeFormatter);
+        System.out.println(parse);
 
-        long num = Long.parseUnsignedLong("NMDCN0000100", 32);
-        System.out.println(num);
-        num++;
-        String s = Long.toUnsignedString(num, 32);
-        System.out.println(s);
 
     }
 

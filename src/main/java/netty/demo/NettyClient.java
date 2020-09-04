@@ -48,11 +48,6 @@ public class NettyClient {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
             String name = bufferedReader.readLine();
             channel.writeAndFlush(Unpooled.copiedBuffer(name + " 进入", CharsetUtil.UTF_8));;
-            while (true) {
-                String next = bufferedReader.readLine();
-                ByteBuf buf = Unpooled.copiedBuffer(next, CharsetUtil.UTF_8);
-                channel.writeAndFlush(buf);
-            }
             //对关闭通道进行监听
 //            channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException | IOException e) {
