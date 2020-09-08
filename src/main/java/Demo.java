@@ -9,6 +9,8 @@ import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalAdjusters;
 import java.util.*;
 import java.util.concurrent.Executors;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
  * Description TODO
@@ -20,17 +22,25 @@ import java.util.concurrent.Executors;
 public class Demo {
 
     public static void main(String[] args) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-M-d HH:mm:ss");
-        LocalDateTime parse = LocalDateTime.parse("2020-9-2 15:51:51", dateTimeFormatter);
-        System.out.println(parse);
-
-
+        Set[] s = new Set[3];
+        fill(s, HashSet::new);
+        fill(s, () -> new HashSet());
     }
 
+    private static <T> void fill(T[] arr, Supplier<T> supplier) {
+        for (int i = 0, len = arr.length; i < len; i++)
+            arr[i] = supplier.get();
+    }
+
+
     private static void alloc() {
-        Domo domo = new Domo();
-        domo.setDdd(127);
-        domo.setCcc("fdddd;");
+        Set[] s = new Set[3];
+        fill(s, HashSet::new);
+
+        HashMap<Object, Object> map = new HashMap<>();
+        Domo bbb = new Domo();
+        bbb.setDdd(127);
+        bbb.setCcc("fdddd;");
 //        domo.setDate(new Date());
     }
 

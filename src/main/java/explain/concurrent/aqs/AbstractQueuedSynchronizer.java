@@ -454,19 +454,21 @@ public abstract class AbstractQueuedSynchronizer
         if (s == null || s.waitStatus > 0) {
             // 如果发现后继节点为空或是取消状态，会进入这里
             s = null;
-            // 从后往前找到不是取消状态的
+            // 从后往前找到不是取消状态的,一定要找到一个
             for (Node t = tail; t != null && t != node; t = t.prev) {
                 if (t.waitStatus <= 0) {
                     s = t;
                 }
             }
         }
+        // 很可能上面翻到最后也没找到还存活的节点，这里就会为空
         if (s != null) {
             LockSupport.unpark(s.thread);
         }
     }
 
     /**
+     * 一般共享锁释放时进来，唤醒后继节点
      * Release action for shared mode -- signals successor and ensures
      * propagation. (Note: For exclusive mode, release just amounts
      * to calling unparkSuccessor of head if it needs signal.)
@@ -484,6 +486,7 @@ public abstract class AbstractQueuedSynchronizer
          * fails, if so rechecking.
          */
         for (;;) {
+            // 当前的头结点
             Node h = head;
             if (h != null && h != tail) {
                 // 头结点状态，只有 SIGNAL状态和 0状态会处理，其他的直接判断结束条件
@@ -495,13 +498,13 @@ public abstract class AbstractQueuedSynchronizer
                             // cas失败了会直接开启下个循环
                             continue;            // loop to recheck cases
                         }
-                        // 这里是唤醒head节点
+                        // 这里传入的是hean，会唤醒head节点的下一个节点可用节点
                         unparkSuccessor(h);
                         break;
                     case 0:
                         // 头结点是0状态会进到这里
                         // 这里会把头结点改成PROPAGATE状态
-                        // 全文只有这一个地方引用了传播状态，所以这个状态应该没啥大用，只是为了区分一下SIGNAL状态
+                        // aqs中只有这一个地方引用了传播状态，所以这个状态应该没啥大用，只是为了区分一下SIGNAL状态
                         if (!compareAndSetWaitStatus(h, 0, Node.PROPAGATE)) {
                             // 状态可能被其他线程改变了
                             // cas失败了会直接开启下个循环
@@ -513,7 +516,7 @@ public abstract class AbstractQueuedSynchronizer
                 }
             }
 
-            // 唯一的循环结束条件
+            // 唯一的循环结束条件，就是以上执行过程中没有其他节点改变head节点
             if (h == head) {
                 // 如果经过上面一系列代码，头节点没有被其他线程改动，那么就可以停止循环了。
                 // loop if head changed
@@ -614,6 +617,8 @@ public abstract class AbstractQueuedSynchronizer
      * Returns true if thread should block. This is the main signal
      * control in all acquire loops.  Requires that pred == node.prev.
      *
+     * 这一步的目的是把前驱节点的状态置为 SIGNAL ，
+     * 因为这个状态标识下个节点可以被park，
      *
      * @param pred 当前节点的前一个节点  node's predecessor holding status
      * @param node 当前节点            the node
@@ -633,6 +638,7 @@ public abstract class AbstractQueuedSynchronizer
 
         if (ws > 0) {
             // 大于0是取消状态 CANCELLED
+            // 这里前驱节点是取消状态
             /*
              * Predecessor was cancelled. Skip over predecessors and
              * indicate retry.

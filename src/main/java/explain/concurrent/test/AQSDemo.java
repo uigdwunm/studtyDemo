@@ -12,6 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 public class AQSDemo {
     public static void main(String[] args) throws Exception {
+        Semaphore semaphore = new Semaphore(19);
+        semaphore.acquire();
+        semaphore.release();
 
         AQSDemo aqsDemo = new AQSDemo();
         aqsDemo.reentrantLockTest();

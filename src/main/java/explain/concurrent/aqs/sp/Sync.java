@@ -20,12 +20,17 @@ abstract class Sync extends AbstractQueuedSynchronizer {
 
     final int nonfairTryAcquireShared(int acquires) {
         for (;;) {
+            // 获取当前的state值
             int available = getState();
+            // state值减去传入的acquires
             int remaining = available - acquires;
             if (remaining < 0) {
+                // 最终结果小于0，返回
                 return remaining;
             }
+            // 最终结果大于0，cas修改state值
             if (compareAndSetState(available, remaining)) {
+                // 成功了返回
                 return remaining;
             }
         }
@@ -33,12 +38,16 @@ abstract class Sync extends AbstractQueuedSynchronizer {
 
     protected final boolean tryReleaseShared(int releases) {
         for (;;) {
+            // 获取当前状态
             int current = getState();
+            // 加起来
             int next = current + releases;
             if (next < current) { // overflow
+                // 结果变小了, 报错
                 throw new Error("Maximum permit count exceeded");
             }
             if (compareAndSetState(current, next)) {
+                // 成功
                 return true;
             }
         }
