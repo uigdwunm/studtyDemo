@@ -555,7 +555,7 @@ public abstract class AbstractQueuedSynchronizer
         if (propagate > 0 || h == null || h.waitStatus < 0 || (h = head) == null || h.waitStatus < 0) {
             Node s = node.next;
             if (s == null || s.isShared()) {
-                // TODO 这就是传播了，也不知道是干啥
+                // 尝试唤醒后继节点
                 doReleaseShared();
             }
         }

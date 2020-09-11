@@ -1,3 +1,4 @@
+import explain.map.HashMap;
 import org.openjdk.jol.info.ClassLayout;
 
 import java.io.*;
@@ -7,7 +8,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalAdjusters;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -22,9 +26,22 @@ import java.util.stream.Stream;
 public class Demo {
 
     public static void main(String[] args) {
-        Set[] s = new Set[3];
-        fill(s, HashSet::new);
-        fill(s, () -> new HashSet());
+        LinkedList<Object> list = new LinkedList<>();
+        ArrayDeque<Object> de = new ArrayDeque<>();
+        HashMap<Object, Object> map = new HashMap<>();
+        map.put(1, 1);
+
+        int h = Integer.MAX_VALUE;
+        int hash =  h ^ (h >>> 16);
+        System.out.println(h);
+        System.out.println(Integer.toBinaryString(h));
+
+        System.out.println(h >>> 16);
+        System.out.println(Integer.toBinaryString(h >>> 16));
+        System.out.println(hash);
+        System.out.println(Integer.toBinaryString(hash));
+//        System.out.println(1 << 30);
+
     }
 
     private static <T> void fill(T[] arr, Supplier<T> supplier) {

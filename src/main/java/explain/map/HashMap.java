@@ -402,8 +402,7 @@ public class HashMap<K, V> extends AbstractMap<K, V>
             initialCapacity = MAXIMUM_CAPACITY;
         if (loadFactor <= 0 || Float.isNaN(loadFactor))
             // 加载因子必须大于零，且必须是确定的数字（ 0.0f/0.0f 就是NAN）
-            throw new IllegalArgumentException("Illegal load factor: " +
-                    loadFactor);
+            throw new IllegalArgumentException("Illegal load factor: " + loadFactor);
         this.loadFactor = loadFactor;
         // 把传入的初始化容量转换为比它稍大的2的指数倍
         this.threshold = tableSizeFor(initialCapacity);
@@ -432,7 +431,6 @@ public class HashMap<K, V> extends AbstractMap<K, V>
      * default load factor (0.75) and an initial capacity sufficient to
      * hold the mappings in the specified <tt>Map</tt>.
      *
-     * TODO
      * 使用与指定Map相同的映射构造一个新的HashMap。
      * 使用默认加载因子（0.75）创建HashMap，初始容量足以保存指定Map中的映射。
      *
@@ -533,7 +531,7 @@ public class HashMap<K, V> extends AbstractMap<K, V>
         // 当前存储数组的容量，用于计算当前key值在数组中的位置
         int n = tab.length;
         if (n < 1) {
-            return  null;
+            return null;
         }
 
         // first 对应hash值的第一个节点（因为可能有冲突的hash值节点形成了链表或者树）
@@ -1329,7 +1327,6 @@ public class HashMap<K, V> extends AbstractMap<K, V>
     /**
      * explain:传入一个key值，通过key找到相应 键值对 ，再进入第二个参数的 函数 中计算，返回的结果作为这个key新的value
      * 如果没找到对应的键值对会新增
-     * (想不出来有啥用，可能更优雅的修改值吧。。。)
      *
      **/
     @Override
@@ -1352,27 +1349,25 @@ public class HashMap<K, V> extends AbstractMap<K, V>
         // 最终如果在map中找到对应值会放到这个变量中
         Node<K, V> old = null;
         // 这里判断长度是否大于阈值(这里搞这个判断看不懂有什么必要)、存储数组是否为null、数组长度是否为0（是否是初始化数组第一次添加）、
-        if (size > threshold || (tab = table) == null ||
-                (n = tab.length) == 0) {
+        if (size > threshold || (tab = table) == null || (n = tab.length) == 0) {
             // if判断后需要调整长度
             n = (tab = resize()).length;
         }
         // 获取对应hash值再存储数组中的节点，此时这个节点不一定是目标节点，因为可能有hash冲突形成的了链表
-        if ((first = tab[i = (n - 1) & hash]) != null) {
+        first = tab[i = (n - 1) & hash];
+        if (first != null) {
             // 这里是要获取到传入的key对应的唯一目标节点
             // 判断这个节点是否树节点
-            if (first instanceof TreeNode)
-                old = (t = (TreeNode<K, V>) first).getTreeNode(hash, key);
-            else {
+            if (first instanceof TreeNode) {
+                t = (TreeNode<K, V>) first;
+                old = t.getTreeNode(hash, key);
+            } else {
                 // 不是树节点，要么是链表，要么是没有hash冲突的单节点
                 // 声明一个临时变量，若有链表则表示当前节点，没有就是当前节点
                 Node<K, V> e = first;
-                // 当前节点的key值，用于和传入的key进行比较
-                K k;
                 do {
                     // 比较是否对应的key节点
-                    if (e.hash == hash &&
-                            ((k = e.key) == key || (key != null && key.equals(k)))) {
+                    if (e.hash == hash && Objects.equals(e.key, key)) {
                         // 如果匹配到目标节点，就放到old变量中
                         old = e;
                         break;
@@ -1451,7 +1446,8 @@ public class HashMap<K, V> extends AbstractMap<K, V>
         Node<K, V> first = tab[i];
         if (first != null) {
             if (first instanceof TreeNode) {
-                old = (t = (TreeNode<K, V>) first).getTreeNode(hash, key);
+                t = (TreeNode<K, V>) first;
+                old = t.getTreeNode(hash, key);
             } else {
                 Node<K, V> e = first;
                 do {
@@ -1476,14 +1472,17 @@ public class HashMap<K, V> extends AbstractMap<K, V>
             if (v != null) {
                 old.value = v;
                 afterNodeAccess(old);
-            } else
+            } else {
                 // 最终的值为null，那么会将节点删除掉
                 removeNode(hash, key, null, false, true);
+            }
             return v;
         }
+        // 走到这里，说明old为null
         if (t != null) {
             t.putTreeVal(this, tab, hash, key, value);
         } else {
+            // 完全新节点
             tab[i] = newNode(hash, key, value, first);
             if (binCount >= TREEIFY_THRESHOLD - 1)
                 treeifyBin(tab, hash);
