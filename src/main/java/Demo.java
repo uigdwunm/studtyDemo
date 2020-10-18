@@ -72,7 +72,6 @@ public class Demo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-//            System.out.println("执行完成");
         }
     }
 
