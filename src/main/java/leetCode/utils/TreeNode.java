@@ -4,9 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class TreeNode {
 
@@ -24,9 +22,41 @@ public class TreeNode {
         Type type = new TypeToken<Integer[]>() {
         }.getType();
         Integer[] o = gson.fromJson(s, type);
-        return create(o);
+        return create2(o);
 
     }
+    public static TreeNode create2(Integer[] nums) {
+        Deque<TreeNode> deque = new LinkedList<>();
+        TreeNode root = new TreeNode(nums[0]);
+        deque.add(root);
+        create22(deque, nums, 1);
+        return root;
+
+    }
+
+    private static void create22(Deque<TreeNode> deque, Integer[] nums, int i) {
+        if (i >= nums.length) {
+            return;
+        }
+        TreeNode first = deque.removeFirst();
+        Integer ln = nums[i];
+        if (ln != null) {
+            first.left = new TreeNode(ln);
+            deque.addFirst(first.left);
+        }
+        if (i + 1 >= nums.length) {
+            return;
+        }
+
+        Integer rn = nums[i + 1];
+        if (rn != null) {
+            first.right = new TreeNode(rn);
+            deque.addFirst(first.right);
+        }
+
+        create22(deque, nums, i + 2);
+    }
+
     public static TreeNode create(Integer[] nums) {
         List<TreeNode> flist = new ArrayList<TreeNode>();
         List<TreeNode> slist = new ArrayList<TreeNode>();
@@ -61,24 +91,8 @@ public class TreeNode {
 
     @Override
     public String toString() {
-        boolean over = false;
-        List<TreeNode> list = new ArrayList<>();
-        list.add(this);
-        List<StringBuilder> lines = new ArrayList<>();
-        StringBuilder sb = new StringBuilder();
-        sb.append("      ").append(String.format("%1$4s", this.val)).append("      ");
-        lines.add(sb);
 
-        for (TreeNode node : list) {
-            if (node == null) {
-                sb.append("null").append("      ").append("null");
-            }
-        }
-        sb.append(System.lineSeparator());
-
-
-
-        return "";
+        return (left == null ? null : left.val) + ", [" + val + "], " + (right == null ? null : right.val);
     }
 
     private void addTab(List<StringBuilder> lines) {

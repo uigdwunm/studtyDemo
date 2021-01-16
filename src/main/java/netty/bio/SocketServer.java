@@ -12,16 +12,16 @@ public class SocketServer {
             System.out.println("等待连接。。");
             Socket socket = serverSocket.accept(); //阻塞方法
             System.out.println("有客户端连接了。。");
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
+//            new Thread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    try {
                         handler(socket);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }).start();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }).start();
         }
     }
 
@@ -40,5 +40,6 @@ public class SocketServer {
         }
         socket.getOutputStream().write("HelloClient".getBytes());
         socket.getOutputStream().flush();
+//        socket.close();
     }
 }

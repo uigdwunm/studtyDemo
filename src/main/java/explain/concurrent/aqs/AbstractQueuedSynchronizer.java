@@ -454,7 +454,8 @@ public abstract class AbstractQueuedSynchronizer
         if (s == null || s.waitStatus > 0) {
             // 如果发现后继节点为空或是取消状态，会进入这里
             s = null;
-            // 从后往前找到不是取消状态的,一定要找到一个
+            // 从后往前找到不是取消状态的,拿到最后一个。
+            // 之所以要从后往前找，是因为节点入队时，先设置prev值，再设置next值
             for (Node t = tail; t != null && t != node; t = t.prev) {
                 if (t.waitStatus <= 0) {
                     s = t;
