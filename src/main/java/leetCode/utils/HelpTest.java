@@ -9,12 +9,12 @@ import java.util.StringJoiner;
 public class HelpTest {
     public static void main(String[] args) {
         Gson gson = new Gson();
-        String json = "[\"LRUCache\",\"put\",\"put\",\"put\",\"get\",\"put\",\"put\",\"get\",\"put\",\"put\",\"get\",\"put\",\"get\",\"get\",\"get\",\"put\",\"put\",\"get\",\"put\",\"get\"]";
+        String json = "[\"LFUCache\",\"put\",\"get\",\"put\",\"get\",\"get\"]";
         Type type = new TypeToken<String[]>() {}.getType();
         String[] nameArr = gson.fromJson(json, type);
 
         type = new TypeToken<Integer[][]>() {}.getType();
-        json = "[[10],[7,28],[7,1],[8,15],[6],[10,27],[8,10],[8],[6,29],[1,9],[6],[10,7],[1],[2],[13],[8,30],[1,5],[1],[13,2],[12]]";
+        json = "[[1],[2,1],[2],[3,2],[2],[3]]";
         Integer[][] argArr = gson.fromJson(json, type);
 
         String name = "cache";

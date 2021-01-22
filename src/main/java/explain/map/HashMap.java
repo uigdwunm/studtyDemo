@@ -628,10 +628,10 @@ public class HashMap<K, V> extends AbstractMap<K, V>
         int i = (n - 1) & hash;
         // 找到在存储数组中对应hash值位置的节点，赋给p
         p = tab[i];
-        if (p == null)
+        if (p == null) {
             // 如果这个节点没有值，直接创建新的节点
             tab[i] = newNode(hash, key, value, null);
-        else {
+        } else {
             // 临时变量e，如果在节点中找到了对应key值，放到这里
             Node<K, V> e;
             // 临时变量，每次查出来的key值放到这里，用于比对

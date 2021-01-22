@@ -65,7 +65,7 @@ import java.util.*;
  * @since 1.2
  */
 
-public abstract class AbstractMap<K,V> implements Map<K,V> {
+public abstract class AbstractMap<K,V> implements explain.map.Map<K,V> {
     /**
      * Sole constructor.  (For invocation by subclass constructors, typically
      * implicit.)

@@ -1467,7 +1467,7 @@ public class ThreadPoolExecutor extends AbstractExecutorService {
                 // 线程池可能突然暴毙了，删掉这个刚加入的任务
                 reject(command);
             } else if (workerCountOf(recheck) == 0) {
-                // 线程池可能会没有线程了，创建一个空线程去执行任务
+                // 核心线程可能设置为0，那么就没有线程执行了，需要创建一个空线程去执行任务
                 addWorker(null, false);
             }
         } else if (addWorker(command, false)) {

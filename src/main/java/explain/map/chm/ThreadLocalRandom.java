@@ -33,7 +33,7 @@
  * http://creativecommons.org/publicdomain/zero/1.0/
  */
 
-package explain.concurrent;
+package explain.map.chm;
 
 import java.io.ObjectStreamField;
 import java.util.Random;
