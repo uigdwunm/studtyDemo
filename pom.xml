@@ -41,9 +41,5 @@
 
     </dependencies>
 
-    <build>
-        <!-- class文件不放到本包目录下，避免oneDrive频繁更新 -->
-        <directory>D:/temp/studyDemoTarget</directory>
-    </build>
 
 </project>
