@@ -38,12 +38,12 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.11</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
+        </dependency>
 
     </dependencies>
-
-    <build>
-        <!-- class文件不放到本包目录下，避免oneDrive频繁更新 -->
-        <directory>D:/temp/studyDemoTarget</directory>
-    </build>
 
 </project>
